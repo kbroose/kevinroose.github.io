@@ -1,0 +1,205 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 19px;
+  line-height: 1.7;
+  color: #111;
+  background: #fcfcfc;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 4rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Header */
+header {
+  margin-bottom: 3rem;
+}
+
+.photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  filter: grayscale(100%);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: normal;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.15rem;
+}
+
+.affiliation {
+  font-style: italic;
+  color: #666;
+}
+
+/* Intro */
+.intro {
+  margin-bottom: 3.5rem;
+}
+
+.intro p {
+  font-size: 1.15rem;
+}
+
+/* Work */
+.work {
+  margin-bottom: 3rem;
+}
+
+.work article {
+  margin-bottom: 2.25rem;
+}
+
+.work h2 {
+  font-size: 1.1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-bottom: 0.3rem;
+}
+
+.work h2 a {
+  text-decoration: none;
+}
+
+.work h2 a:hover {
+  text-decoration: underline;
+}
+
+.work p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Books */
+.books {
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.books p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.books a {
+  color: #333;
+}
+
+/* Contact */
+.contact {
+  margin-bottom: 2.5rem;
+}
+
+.contact p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 2;
+}
+
+.contact a {
+  color: #333;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background: #fff;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #999;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  align-self: flex-start;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.65rem 1.5rem;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #333;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+footer a {
+  font-size: 0.85rem;
+  color: #888;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #111;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  main {
+    padding: 3rem 1.25rem 2rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .photo {
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -7,12 +7,12 @@ body {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 17px;
   line-height: 1.65;
-  background: #fff;
-  color: #181818;
+  background: #FAF8F5;
+  color: #2C2825;
 }
 
 a {
-  color: #C5322E;
+  color: #8B4513;
   text-decoration: none;
 }
 
@@ -30,7 +30,7 @@ a:hover {
 header {
   margin-bottom: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #E5E0DA;
 }
 
 .header-content {
@@ -44,14 +44,22 @@ header {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
+  filter: grayscale(30%) sepia(10%);
 }
 
 h1 {
   font-size: 1.75rem;
   font-weight: 400;
   margin: 0;
-  color: #181818;
+  color: #2C2825;
   letter-spacing: -0.01em;
+}
+
+.affiliation {
+  font-style: italic;
+  color: #6B635B;
+  margin: 0.15rem 0 0 0;
+  font-size: 1rem;
 }
 
 /* Sections */
@@ -61,7 +69,7 @@ section {
 
 #about p {
   font-size: 1.1rem;
-  color: #333;
+  color: #3D3733;
   margin: 0;
 }
 
@@ -71,7 +79,7 @@ h2 {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #646F82;
+  color: #8B8078;
   margin: 0 0 1rem 0;
 }
 
@@ -94,34 +102,48 @@ li {
 
 .soon {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  color: #646F82;
+  color: #8B8078;
   font-size: 0.8rem;
   font-style: italic;
 }
 
 .blurb {
   font-size: 0.95rem;
-  color: #555;
+  color: #6B635B;
   margin: 0.35rem 0 0 0;
   line-height: 1.55;
 }
 
-#writing p {
-  margin-top: 0.75rem;
+#writing li, #video li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #E5E0DA;
 }
 
-#writing p a {
-  color: #646F82;
+#writing li:last-child, #video li:last-child {
+  border-bottom: none;
+}
+
+#writing li > a, #video li > a {
+  font-weight: 500;
+  color: #2C2825;
+}
+
+#writing > p, #video > p {
+  margin-top: 1rem;
+}
+
+#writing > p a, #video > p a {
+  color: #8B8078;
   font-size: 0.9rem;
 }
 
-#writing p a:hover {
-  color: #C5322E;
+#writing > p a:hover, #video > p a:hover {
+  color: #8B4513;
 }
 
 /* Newsletter */
 .newsletter-section {
-  background: #f6f6f6;
+  background: #F0EBE5;
   border-radius: 6px;
   padding: 1.5rem;
   margin-bottom: 2.5rem;
@@ -129,7 +151,7 @@ li {
 
 .newsletter-section p {
   margin: 0 0 1rem 0;
-  color: #333;
+  color: #3D3733;
 }
 
 .subscribe-btn {
@@ -137,7 +159,7 @@ li {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
-  background: #C5322E;
+  background: #8B4513;
   color: #fff;
   padding: 0.6rem 1.25rem;
   border-radius: 4px;
@@ -145,13 +167,13 @@ li {
 }
 
 .subscribe-btn:hover {
-  background: #a82a27;
+  background: #6B3410;
   text-decoration: none;
 }
 
 /* Press / Bio box */
 .press-section {
-  background: #f6f6f6;
+  background: #F0EBE5;
   border-radius: 6px;
   padding: 1.5rem;
 }
@@ -181,29 +203,29 @@ li {
 .photo-download a {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 0.75rem;
-  color: #646F82;
+  color: #8B8078;
 }
 
 .bio-text p {
   margin: 0;
   font-size: 0.95rem;
-  color: #333;
+  color: #3D3733;
 }
 
 /* Source FAQ */
 #source-faq {
-  border-top: 1px solid #ececec;
+  border-top: 1px solid #E5E0DA;
   padding-top: 2rem;
 }
 
 .faq-intro {
-  color: #646F82;
+  color: #8B8078;
   font-size: 0.95rem;
   margin-bottom: 1.25rem;
 }
 
 details {
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #E5E0DA;
   padding: 0.75rem 0;
 }
 
@@ -215,7 +237,7 @@ summary {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
-  color: #181818;
+  color: #2C2825;
   cursor: pointer;
   list-style: none;
 }
@@ -226,7 +248,7 @@ summary::-webkit-details-marker {
 
 summary::before {
   content: "+ ";
-  color: #C5322E;
+  color: #8B4513;
   font-weight: 600;
 }
 
@@ -237,7 +259,7 @@ details[open] summary::before {
 details p {
   margin: 0.75rem 0 0.5rem 0;
   font-size: 0.9rem;
-  color: #444;
+  color: #5A534B;
   padding-left: 1rem;
 }
 
@@ -247,12 +269,12 @@ details p:last-child {
 
 /* Contact */
 #contact {
-  border-top: 1px solid #ececec;
+  border-top: 1px solid #E5E0DA;
   padding-top: 2rem;
 }
 
 #contact > p {
-  color: #646F82;
+  color: #8B8078;
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
 }
@@ -277,7 +299,7 @@ details p:last-child {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #646F82;
+  color: #8B8078;
   margin-bottom: 0.4rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -289,16 +311,16 @@ details p:last-child {
   padding: 0.7rem 0.85rem;
   font-size: 1rem;
   font-family: Georgia, 'Times New Roman', serif;
-  background: #f6f6f6;
-  border: 1px solid #ececec;
+  background: #F0EBE5;
+  border: 1px solid #DDD7CF;
   border-radius: 4px;
-  color: #181818;
+  color: #2C2825;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #C5322E;
+  border-color: #8B4513;
   background: #fff;
 }
 
@@ -312,7 +334,7 @@ button {
   font-size: 0.9rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-weight: 500;
-  background: #C5322E;
+  background: #8B4513;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -320,26 +342,26 @@ button {
 }
 
 button:hover {
-  background: #a82a27;
+  background: #6B3410;
 }
 
 /* Footer */
 footer {
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #ececec;
+  border-top: 1px solid #E5E0DA;
   display: flex;
   gap: 1.5rem;
 }
 
 footer a {
-  color: #646F82;
+  color: #8B8078;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 0.85rem;
 }
 
 footer a:hover {
-  color: #C5322E;
+  color: #8B4513;
 }
 
 /* Responsive */
