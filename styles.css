@@ -388,4 +388,23 @@ footer a:hover {
     width: 64px;
     height: 64px;
   }
+
+  footer {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  #about p {
+    font-size: 1rem;
+  }
+
+  .newsletter-section,
+  .press-section {
+    padding: 1.25rem;
+  }
+
+  section iframe {
+    height: auto;
+    min-height: 200px;
+  }
 }
