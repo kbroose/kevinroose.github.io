@@ -404,7 +404,10 @@ footer a:hover {
   }
 
   section iframe {
-    height: auto;
-    min-height: 200px;
+    min-height: 500px;
+  }
+
+  #contact iframe {
+    min-height: 550px;
   }
 }
