@@ -364,6 +364,20 @@ footer a:hover {
   color: #8B4513;
 }
 
+footer .made-with {
+  color: #B0A89F;
+  font-size: 0.8rem;
+  margin-left: auto;
+}
+
+footer .made-with a {
+  color: #B0A89F;
+}
+
+footer .made-with a:hover {
+  color: #8B4513;
+}
+
 /* Responsive */
 @media (max-width: 550px) {
   .container {
