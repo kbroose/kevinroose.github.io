@@ -283,7 +283,36 @@ console.log(`
       <a href="https://www.linkedin.com/in/kevin-roose/">LinkedIn</a>
       <a href="https://agichronicles.com">Substack</a>
       <span class="made-with">Made with help from <a href="https://claude.ai/code">Claude Code</a></span>
+      <button class="geocities-toggle" onclick="toggleGeocities()" title="🚧">🚧</button>
     </footer>
+
+    <!-- Geocities mode extras (hidden until activated) -->
+    <div class="geocities-extras">
+      <div class="visitor-counter">
+        <span>You are visitor #</span><span class="counter-num">002,847</span>
+      </div>
+      <marquee class="geocities-marquee" scrollamount="6">★彡 WELCOME TO MY HOMEPAGE 彡★ ☆ BEST VIEWED IN NETSCAPE NAVIGATOR 4.0 ☆ ★彡 SIGN MY GUESTBOOK 彡★ ☆ UNDER CONSTRUCTION ☆ ★彡 AOL KEYWORD: KROOSE 彡★</marquee>
+      <div class="netscape-badge">
+        <span>Best viewed with</span>
+        <strong>NETSCAPE NAVIGATOR</strong>
+        <span>800x600</span>
+      </div>
+    </div>
   </div>
+  <script>
+    function toggleGeocities() {
+      document.body.classList.toggle('geocities');
+      const btn = document.querySelector('.geocities-toggle');
+      if (document.body.classList.contains('geocities')) {
+        btn.textContent = '🔙';
+        btn.title = 'Return to the future';
+        document.title = '~*~KeViNs HoMePaGe~*~';
+      } else {
+        btn.textContent = '🚧';
+        btn.title = '🚧';
+        document.title = 'Kevin Roose';
+      }
+    }
+  </script>
 </body>
 </html>
