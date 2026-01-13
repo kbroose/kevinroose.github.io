@@ -217,11 +217,87 @@
       color: var(--primary);
     }
 
+    /* Claude Code Setup */
+    .claude-setup {
+      padding: 80px 24px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: white;
+    }
+    .claude-badge {
+      display: inline-block;
+      background: #10b981;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .claude-setup h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .claude-setup .setup-intro {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 32px;
+    }
+    .claude-setup .setup-intro a {
+      color: #818cf8;
+    }
+    .prompt-box {
+      background: #0d1117;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+    .copy-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .copy-btn:hover {
+      background: var(--primary-dark);
+    }
+    .copy-btn.copied {
+      background: #10b981;
+    }
+    .prompt-text {
+      padding: 20px;
+      margin: 0;
+      font-family: 'SF Mono', Monaco, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #e6edf3;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    .claude-note {
+      color: rgba(255,255,255,0.7);
+      font-size: 15px;
+    }
+
     /* Responsive */
     @media (max-width: 600px) {
       .hero h1 { font-size: 32px; }
       .hero p { font-size: 17px; }
       .step { flex-direction: column; gap: 16px; }
+      .prompt-text { font-size: 12px; }
     }
   </style>
 </head>
@@ -231,7 +307,7 @@
       <div class="hero-logo">S</div>
       <h1>Stash</h1>
       <p>A free, open-source read-it-later app. Save articles, highlights, and Kindle notes to your own database. No subscription. You own your data.</p>
-      <a href="https://github.com/kevinroose/stash" class="hero-cta">Get Started (Free)</a>
+      <a href="https://github.com/kbroose/stash" class="hero-cta">Get Started (Free)</a>
     </div>
   </section>
 
@@ -273,9 +349,38 @@
     </div>
   </section>
 
+  <!-- Claude Code Setup -->
+  <section class="claude-setup">
+    <div class="container">
+      <div class="claude-badge">Recommended</div>
+      <h2>Install with Claude Code</h2>
+      <p class="setup-intro">If you have <a href="https://claude.ai/download" target="_blank">Claude Code</a>, setup takes 2 minutes. Just paste this prompt:</p>
+
+      <div class="prompt-box">
+        <div class="prompt-header">
+          <span>Copy this prompt</span>
+          <button class="copy-btn" onclick="copyPrompt()">Copy</button>
+        </div>
+        <pre class="prompt-text" id="claude-prompt">I want to set up Stash, a self-hosted read-it-later app from github.com/kbroose/stash
+
+Please help me:
+1. Clone the repo to my computer
+2. Create a free Supabase project at supabase.com (I'll do this part manually and give you the credentials)
+3. Run the database schema
+4. Configure the extension and web app with my Supabase credentials
+5. Help me load the Chrome extension
+6. Deploy the web app to Vercel (free)
+
+Walk me through each step and wait for my input when needed.</pre>
+      </div>
+
+      <p class="claude-note">Claude will guide you through each step interactively. You'll still need to create accounts on Supabase and Vercel (both free), but Claude handles all the technical setup.</p>
+    </div>
+  </section>
+
   <section class="setup">
     <div class="container">
-      <h2>Set Up Your Own Stash</h2>
+      <h2>Or Set Up Manually</h2>
       <p class="setup-intro">No coding required. Just follow these steps.</p>
 
       <div class="step">
@@ -304,7 +409,7 @@
         <div class="step-content">
           <span class="time-badge">1 minute</span>
           <h3>Set Up the Database</h3>
-          <p>Copy the entire contents of <a href="https://github.com/kevinroose/stash/blob/main/supabase/schema.sql" target="_blank">schema.sql</a> and paste it into the SQL Editor. Click "Run".</p>
+          <p>Copy the entire contents of <a href="https://github.com/kbroose/stash/blob/main/supabase/schema.sql" target="_blank">schema.sql</a> and paste it into the SQL Editor. Click "Run".</p>
           <p>This creates all the tables Stash needs.</p>
         </div>
       </div>
@@ -337,7 +442,7 @@
         <div class="step-content">
           <span class="time-badge">5 minutes</span>
           <h3>Download and Configure Stash</h3>
-          <p>Download the project from <a href="https://github.com/kevinroose/stash" target="_blank">GitHub</a> (click "Code" → "Download ZIP").</p>
+          <p>Download the project from <a href="https://github.com/kbroose/stash" target="_blank">GitHub</a> (click "Code" → "Download ZIP").</p>
           <p>Unzip it, then edit these two files with your Supabase details:</p>
           <ul style="margin: 12px 0; padding-left: 20px; color: var(--text-muted);">
             <li><code>extension/config.js</code></li>
@@ -416,8 +521,22 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Made by <a href="https://kevinroose.com">Kevin Roose</a>. Open source on <a href="https://github.com/kevinroose/stash">GitHub</a>.</p>
+      <p>Made by <a href="https://kevinroose.com">Kevin Roose</a>. Open source on <a href="https://github.com/kbroose/stash">GitHub</a>.</p>
     </div>
   </footer>
+  <script>
+    function copyPrompt() {
+      const text = document.getElementById('claude-prompt').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
 </body>
 </html>
