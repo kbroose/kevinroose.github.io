@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stash - Your Personal Read-It-Later App</title>
+  <meta name="description" content="A free, open-source Pocket alternative. Save articles, highlights, and Kindle notes to your own database.">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .hero-logo {
+      width: 80px;
+      height: 80px;
+      background: white;
+      color: var(--primary);
+      font-size: 40px;
+      font-weight: 700;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 20px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 24px;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 48px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+    .feature {
+      background: var(--card-bg);
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .feature h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .feature p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Setup Steps */
+    .setup {
+      padding: 80px 24px;
+      background: white;
+    }
+    .setup h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .setup-intro {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      font-size: 18px;
+    }
+    .step {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 48px;
+      align-items: flex-start;
+    }
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .step-content h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .step-content p {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .step-content a {
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .step-content code {
+      background: var(--bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .step-content .note {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    /* Time estimate */
+    .time-badge {
+      display: inline-block;
+      background: #d1fae5;
+      color: #065f46;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 80px 24px;
+    }
+    .faq h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 48px;
+    }
+    .faq-item {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .faq-item h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .footer a {
+      color: var(--primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 17px; }
+      .step { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logo">S</div>
+      <h1>Stash</h1>
+      <p>A free, open-source read-it-later app. Save articles, highlights, and Kindle notes to your own database. No subscription. You own your data.</p>
+      <a href="https://github.com/kevinroose/stash" class="hero-cta">Get Started (Free)</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <h2>Everything you need to save what matters</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">📄</div>
+          <h3>Save Articles</h3>
+          <p>One-click save from Chrome or any browser. Full article text extraction so you can read offline.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✨</div>
+          <h3>Save Highlights</h3>
+          <p>Select any text on a page and save just that snippet. Perfect for quotes and research.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📚</div>
+          <h3>Kindle Import</h3>
+          <p>Upload your Kindle's My Clippings.txt file to import all your book highlights.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔍</div>
+          <h3>Full-Text Search</h3>
+          <p>Search across everything you've saved. Find that article you read months ago.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📱</div>
+          <h3>Works Everywhere</h3>
+          <p>Web app works on Mac, iPhone, iPad. Add to home screen for app-like experience.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <h3>You Own Your Data</h3>
+          <p>Everything stored in your own Supabase database. Export anytime. No lock-in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="setup">
+    <div class="container">
+      <h2>Set Up Your Own Stash</h2>
+      <p class="setup-intro">No coding required. Just follow these steps.</p>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <span class="time-badge">2 minutes</span>
+          <h3>Create a Free Supabase Account</h3>
+          <p>Supabase is a free database service. Sign up with your GitHub account.</p>
+          <a href="https://supabase.com" target="_blank">Go to supabase.com →</a>
+          <div class="note">The free tier includes 500MB storage and unlimited API requests - more than enough for personal use.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <span class="time-badge">3 minutes</span>
+          <h3>Create a New Project</h3>
+          <p>Click "New Project" and give it a name (like "stash"). Choose a strong password and select a region close to you.</p>
+          <p>Once created, go to <strong>SQL Editor</strong> in the left sidebar.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <span class="time-badge">1 minute</span>
+          <h3>Set Up the Database</h3>
+          <p>Copy the entire contents of <a href="https://github.com/kevinroose/stash/blob/main/supabase/schema.sql" target="_blank">schema.sql</a> and paste it into the SQL Editor. Click "Run".</p>
+          <p>This creates all the tables Stash needs.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <span class="time-badge">2 minutes</span>
+          <h3>Create Your User Account</h3>
+          <p>Go to <strong>Authentication → Users</strong> in Supabase. Click "Add user" and create an account with your email.</p>
+          <p>Copy the <strong>User UID</strong> (the long string of letters and numbers) - you'll need this.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <span class="time-badge">2 minutes</span>
+          <h3>Get Your API Keys</h3>
+          <p>Go to <strong>Project Settings → API</strong> in Supabase. Copy these two values:</p>
+          <ul style="margin: 12px 0; padding-left: 20px; color: var(--text-muted);">
+            <li><strong>Project URL</strong> (looks like <code>https://xxxxx.supabase.co</code>)</li>
+            <li><strong>anon public</strong> key (the long key under "Project API keys")</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <span class="time-badge">5 minutes</span>
+          <h3>Download and Configure Stash</h3>
+          <p>Download the project from <a href="https://github.com/kevinroose/stash" target="_blank">GitHub</a> (click "Code" → "Download ZIP").</p>
+          <p>Unzip it, then edit these two files with your Supabase details:</p>
+          <ul style="margin: 12px 0; padding-left: 20px; color: var(--text-muted);">
+            <li><code>extension/config.js</code></li>
+            <li><code>web/config.js</code></li>
+          </ul>
+          <p>Replace the placeholder values with your Project URL, anon key, and User UID.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">7</div>
+        <div class="step-content">
+          <span class="time-badge">2 minutes</span>
+          <h3>Install the Chrome Extension</h3>
+          <p>Open Chrome and go to <code>chrome://extensions</code></p>
+          <p>Turn on "Developer mode" (toggle in top right), then click "Load unpacked" and select the <code>extension</code> folder.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">8</div>
+        <div class="step-content">
+          <span class="time-badge">3 minutes</span>
+          <h3>Deploy the Web App (Optional)</h3>
+          <p>For the best experience, deploy the web app so you can access it from any device:</p>
+          <ol style="margin: 12px 0; padding-left: 20px; color: var(--text-muted);">
+            <li>Create a free account at <a href="https://vercel.com" target="_blank">vercel.com</a></li>
+            <li>Upload the <code>web</code> folder</li>
+            <li>Done! You'll get a URL like <code>your-stash.vercel.app</code></li>
+          </ol>
+          <div class="note">Alternatively, just open <code>web/index.html</code> locally in your browser.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">✓</div>
+        <div class="step-content">
+          <h3>You're Done!</h3>
+          <p>Click the Stash icon in Chrome to start saving articles. Your saves will sync to your Supabase database and appear in the web app.</p>
+          <p><strong>To import Kindle highlights:</strong> Connect your Kindle via USB, copy <code>My Clippings.txt</code> from the <code>documents</code> folder, then use "Import Kindle" in the web app.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2>Questions</h2>
+
+      <div class="faq-item">
+        <h3>Is this really free?</h3>
+        <p>Yes. Supabase's free tier is generous (500MB, unlimited requests), and Vercel's free tier handles unlimited personal projects. You'll never pay anything unless you save tens of thousands of articles.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do I need to know how to code?</h3>
+        <p>No. You just need to copy-paste a few things and click some buttons. If you can edit a text file, you can set this up.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I use this on my phone?</h3>
+        <p>Yes. The web app works great on mobile. Add it to your home screen for an app-like experience. There's also an iOS Shortcut for saving from Safari.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What happens to my data?</h3>
+        <p>Your data lives in your own Supabase database. You can export it anytime, delete it, or migrate it somewhere else. You're in full control.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Why did you make this?</h3>
+        <p>I wanted a Pocket replacement that I owned. Most read-it-later apps are subscription services that can shut down or change their terms. With Stash, your data is yours forever.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Made by <a href="https://kevinroose.com">Kevin Roose</a>. Open source on <a href="https://github.com/kevinroose/stash">GitHub</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
