@@ -393,7 +393,8 @@ details p:last-child {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   width: 100%;
   padding: 0.75rem 0.9rem;
   font-size: 1rem;
@@ -406,7 +407,8 @@ details p:last-child {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
   border-color: var(--color-accent);
   background: #fff;
@@ -839,7 +841,8 @@ footer .made-with a:hover {
 }
 
 .geocities .form-group input,
-.geocities .form-group textarea {
+.geocities .form-group textarea,
+.geocities .form-group select {
   background: #fff !important;
   border: 2px inset #808080 !important;
   border-radius: 0 !important;

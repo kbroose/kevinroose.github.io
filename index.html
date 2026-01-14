@@ -236,7 +236,31 @@ console.log(`
     <section id="contact">
       <h2>Contact</h2>
       <p>For story tips, press inquiries, or speaking.</p>
-      <iframe src="https://tally.so/embed/A724rB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="450" frameborder="0" style="border: none;"></iframe>
+      <p id="thank-you" style="display:none; background: #e8f5e9; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">Thanks! Your message has been sent.</p>
+      <form class="contact-form" action="https://formsubmit.co/kevin@kevinroose.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from kevinroose.com">
+        <input type="hidden" name="_next" value="https://kevinroose.com/?sent=1#contact">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
     </section>
 
     <section id="source-faq">
@@ -300,6 +324,11 @@ console.log(`
     </div>
   </div>
   <script>
+    if (new URLSearchParams(window.location.search).get('sent')) {
+      document.getElementById('thank-you').style.display = 'block';
+      history.replaceState({}, '', window.location.pathname + '#contact');
+    }
+
     function toggleGeocities() {
       document.body.classList.toggle('geocities');
       const btn = document.querySelector('.geocities-toggle');
