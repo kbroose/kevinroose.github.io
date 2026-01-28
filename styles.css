@@ -419,6 +419,43 @@ details p:last-child {
   resize: vertical;
 }
 
+.inquiry-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.toggle-option {
+  cursor: pointer;
+}
+
+.toggle-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle-option span {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  background: var(--color-bg-elevated);
+  border: 1px solid #DDD7CF;
+  border-radius: 5px;
+  transition: all var(--transition-fast);
+}
+
+.toggle-option:hover span {
+  border-color: var(--color-accent);
+}
+
+.toggle-option input:checked + span {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
 button {
   align-self: flex-start;
   padding: 0.7rem 1.5rem;

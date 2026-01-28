@@ -238,10 +238,32 @@ console.log(`
       <p>For story tips, press inquiries, or speaking.</p>
       <p id="thank-you" style="display:none; background: #e8f5e9; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">Thanks! Your message has been sent.</p>
       <form class="contact-form" action="https://formsubmit.co/kevin@kevinroose.com" method="POST">
-        <input type="hidden" name="_subject" value="New message from kevinroose.com">
+        <input type="hidden" name="_subject" id="form-subject" value="[Other] New message from kevinroose.com">
         <input type="hidden" name="_next" value="https://kevinroose.com/?sent=1#contact">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_honey" style="display:none">
+
+        <div class="form-group">
+          <label>Inquiry Type</label>
+          <div class="inquiry-toggle">
+            <label class="toggle-option">
+              <input type="radio" name="inquiry_type" value="Media Inquiry">
+              <span>Media Inquiry</span>
+            </label>
+            <label class="toggle-option">
+              <input type="radio" name="inquiry_type" value="Speaking">
+              <span>Speaking</span>
+            </label>
+            <label class="toggle-option">
+              <input type="radio" name="inquiry_type" value="Story Tip">
+              <span>Story Tip</span>
+            </label>
+            <label class="toggle-option">
+              <input type="radio" name="inquiry_type" value="Other" checked>
+              <span>Other</span>
+            </label>
+          </div>
+        </div>
 
         <div class="form-row">
           <div class="form-group">
@@ -328,6 +350,13 @@ console.log(`
       document.getElementById('thank-you').style.display = 'block';
       history.replaceState({}, '', window.location.pathname + '#contact');
     }
+
+    // Update email subject based on inquiry type selection
+    document.querySelectorAll('input[name="inquiry_type"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.getElementById('form-subject').value = '[' + this.value + '] New message from kevinroose.com';
+      });
+    });
 
     function toggleGeocities() {
       document.body.classList.toggle('geocities');
