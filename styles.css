@@ -93,45 +93,6 @@ h1 {
   font-size: 1rem;
 }
 
-/* Navigation */
-.site-nav {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  padding: 0.4rem 0.6rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--color-text-muted);
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-}
-
-.site-nav a {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.site-nav a:hover {
-  color: var(--color-accent);
-}
-
 /* Sections */
 section {
   margin-bottom: 2.75rem;
@@ -563,21 +524,6 @@ footer .made-with a:hover {
 @media (max-width: 550px) {
   .container {
     padding: 2.5rem 1.25rem 2rem;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1rem;
-  }
-
-  .nav-links.open {
-    display: flex;
   }
 
   .form-row {
