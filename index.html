@@ -239,6 +239,7 @@ console.log(`
       <p id="thank-you" style="display:none; background: #e8f5e9; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">Thanks! Your message has been sent.</p>
       <form class="contact-form" action="https://formsubmit.co/kevin@kevinroose.com" method="POST">
         <input type="hidden" name="_subject" id="form-subject" value="[Other] New message from kevinroose.com">
+        <input type="hidden" name="_replyto" id="form-replyto">
         <input type="hidden" name="_next" value="https://kevinroose.com/?sent=1#contact">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_honey" style="display:none">
@@ -356,6 +357,11 @@ console.log(`
       radio.addEventListener('change', function() {
         document.getElementById('form-subject').value = '[' + this.value + '] New message from kevinroose.com';
       });
+    });
+
+    // Set reply-to address from email field before submit
+    document.querySelector('.contact-form').addEventListener('submit', function() {
+      document.getElementById('form-replyto').value = document.getElementById('email').value;
     });
 
     function toggleGeocities() {
