@@ -127,10 +127,13 @@ console.log(`
     </header>
 
     <nav class="site-nav">
-      <a href="#books">Books</a>
-      <a href="#podcasts">Podcasts</a>
-      <a href="#writing">Writing</a>
-      <a href="#contact">Contact</a>
+      <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+      <div class="nav-links">
+        <a href="#books">Books</a>
+        <a href="#podcasts">Podcasts</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
 
     <section id="about">
@@ -368,6 +371,18 @@ console.log(`
     // Set reply-to address from email field before submit
     document.querySelector('.contact-form').addEventListener('submit', function() {
       document.getElementById('form-replyto').value = document.getElementById('email').value;
+    });
+
+    // Mobile nav toggle
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('open');
+    });
+
+    // Close nav when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.remove('open');
+      });
     });
 
     function toggleGeocities() {
