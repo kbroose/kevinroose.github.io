@@ -236,12 +236,9 @@ console.log(`
     <section id="contact">
       <h2>Contact</h2>
       <p id="thank-you" style="display:none; background: #e8f5e9; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">Thanks! Your message has been sent.</p>
-      <form class="contact-form" action="https://formsubmit.co/kevin@kevinroose.com" method="POST">
-        <input type="hidden" name="_subject" id="form-subject" value="[Other] New message from kevinroose.com">
-        <input type="hidden" name="_replyto" id="form-replyto">
-        <input type="hidden" name="_next" value="https://kevinroose.com/?sent=1#contact">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" style="display:none">
+      <p id="form-error" style="display:none; background: #fdecea; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">Sorry, something went wrong sending your message. Please try again in a moment, or reach me on Signal: <strong>@kevinroose.01</strong>.</p>
+      <form class="contact-form">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
 
         <div class="form-group">
           <label>Inquiry Type</label>
@@ -346,21 +343,48 @@ console.log(`
     </div>
   </div>
   <script>
-    if (new URLSearchParams(window.location.search).get('sent')) {
-      document.getElementById('thank-you').style.display = 'block';
-      history.replaceState({}, '', window.location.pathname + '#contact');
-    }
+    // Contact form -> Cloudflare Worker -> Resend. Never navigates away, so no
+    // redirect/404 failure mode. Paste your deployed Worker URL below.
+    const WORKER_URL = 'https://kevinroose-form.kbroose.workers.dev/';
 
-    // Update email subject based on inquiry type selection
-    document.querySelectorAll('input[name="inquiry_type"]').forEach(function(radio) {
-      radio.addEventListener('change', function() {
-        document.getElementById('form-subject').value = '[' + this.value + '] New message from kevinroose.com';
-      });
-    });
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      const btn = form.querySelector('button[type="submit"]');
+      const thankYou = document.getElementById('thank-you');
+      const errorBox = document.getElementById('form-error');
+      const inquiry = form.querySelector('input[name="inquiry_type"]:checked');
 
-    // Set reply-to address from email field before submit
-    document.querySelector('.contact-form').addEventListener('submit', function() {
-      document.getElementById('form-replyto').value = document.getElementById('email').value;
+      const payload = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value,
+        inquiry_type: inquiry ? inquiry.value : 'Other',
+        _honey: form.querySelector('input[name="_honey"]').value
+      };
+
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      errorBox.style.display = 'none';
+
+      fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function(r) { return r.json().catch(function() { return { ok: r.ok }; }); })
+        .then(function(res) {
+          if (!res.ok) throw new Error(res.error || 'failed');
+          form.reset();
+          form.style.display = 'none';
+          thankYou.style.display = 'block';
+        })
+        .catch(function() {
+          btn.disabled = false;
+          btn.textContent = original;
+          errorBox.style.display = 'block';
+        });
     });
 
     function toggleGeocities() {
