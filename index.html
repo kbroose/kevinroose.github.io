@@ -398,57 +398,7 @@ console.log(`
     </div>
   </div>
 
-  <!-- Book announcement modal -->
-  <div class="book-modal" id="book-modal" role="dialog" aria-modal="true" aria-labelledby="book-modal-title" hidden>
-    <div class="book-modal-backdrop" data-close-modal></div>
-    <div class="book-modal-panel">
-      <button class="book-modal-close" type="button" aria-label="Close" data-close-modal>&times;</button>
-      <a class="book-modal-cover" href="https://theagichronicles.com">
-        <img src="cover.jpg" alt="The AGI Chronicles book cover" width="912" height="1400">
-      </a>
-      <div class="book-modal-text">
-        <p class="kicker">New book &middot; October 6, 2026</p>
-        <h2 id="book-modal-title">The AGI Chronicles</h2>
-        <p class="book-modal-sub">The Inside Story of the Race to Create an Artificial Superintelligence</p>
-        <p>The definitive, behind-the-scenes account of the trillion-dollar sprint to create AGI, based on more than 150 interviews with insiders at OpenAI, Anthropic, and Google DeepMind. Starred reviews from <em>Publishers Weekly</em> and <em>Kirkus</em>.</p>
-        <div class="book-modal-actions">
-          <a class="book-modal-btn" href="https://theagichronicles.com">Pre-order now</a>
-          <button type="button" class="book-modal-dismiss" data-close-modal>Maybe later</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // Book modal: show once per visitor (per browser), dismiss with Esc/backdrop/buttons.
-    (function () {
-      var modal = document.getElementById('book-modal');
-      var KEY = 'agichronicles-modal-dismissed';
-      var seen = false;
-      try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
-      if (seen || location.hash) return;
-
-      function close() {
-        modal.hidden = true;
-        document.body.classList.remove('modal-open');
-        try { localStorage.setItem(KEY, '1'); } catch (e) {}
-      }
-      modal.querySelectorAll('[data-close-modal]').forEach(function (el) {
-        el.addEventListener('click', close);
-      });
-      modal.querySelector('.book-modal-btn').addEventListener('click', function () {
-        try { localStorage.setItem(KEY, '1'); } catch (e) {}
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !modal.hidden) close();
-      });
-      setTimeout(function () {
-        modal.hidden = false;
-        document.body.classList.add('modal-open');
-        modal.querySelector('.book-modal-close').focus();
-      }, 900);
-    })();
-
     // Contact form -> Cloudflare Worker -> Resend. Never navigates away, so no
     // redirect/404 failure mode.
     const WORKER_URL = 'https://kevinroose-form.kbroose.workers.dev/';
