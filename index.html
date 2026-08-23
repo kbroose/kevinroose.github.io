@@ -22,7 +22,7 @@
       "@type": "Organization",
       "name": "The New York Times"
     },
-    "description": "Kevin Roose is a tech columnist at The New York Times, covering artificial intelligence and the technology industry. He is the co-host of Hard Fork, a popular weekly podcast about technology, and previously created Rabbit Hole, an investigative podcast series about internet radicalization. He has written four books: The Unlikely Disciple (2009), Young Money (2014), Futureproof (2021), and an upcoming book about the race to build artificial general intelligence (2026). He is known for thoughtful, nuanced coverage of AI and its implications for society. He lives in the Bay Area.",
+    "description": "Kevin Roose is a tech columnist at The New York Times, covering artificial intelligence and the technology industry. He is the co-host of Hard Fork, a popular weekly podcast about technology, and previously created Rabbit Hole, an investigative podcast series about internet radicalization. He has written four books: The Unlikely Disciple (2009), Young Money (2014), Futureproof (2021), and The AGI Chronicles: The Inside Story of the Race to Create an Artificial Superintelligence (Farrar, Straus and Giroux, October 6, 2026; https://theagichronicles.com). He is known for thoughtful, nuanced coverage of AI and its implications for society. He lives in the Bay Area.",
     "url": "https://kevinroose.com",
     "image": "https://kevinroose.com/headshot.jpg",
     "sameAs": [
@@ -30,7 +30,8 @@
       "https://www.instagram.com/kevinroose",
       "https://www.linkedin.com/in/kevin-roose/",
       "https://www.nytimes.com/by/kevin-roose",
-      "https://kevinroose.substack.com"
+      "https://kevinroose.substack.com",
+      "https://theagichronicles.com"
     ],
     "knowsAbout": ["Artificial Intelligence", "Technology", "Silicon Valley", "Social Media", "AI Safety", "Automation", "Journalism"],
     "hasOccupation": [
@@ -113,7 +114,8 @@ console.log(`
                       @@@@@@@@@@@@
 
   Hey, you opened the console.
-  I'm working on a book about AI. Say hi: kevinroose.com/#contact
+  My book about the AGI race comes out Oct 6, 2026: theagichronicles.com
+  Say hi: kevinroose.com/#contact
 `);
 </script>
 <body>
@@ -136,7 +138,7 @@ console.log(`
 
     <section id="about">
       <p>
-        I'm a technology columnist at <em>The New York Times</em>, where I've spent the past decade covering Silicon Valley, social media, and the societal effects of new technology. I co-host <a href="https://www.nytimes.com/column/hard-fork">Hard Fork</a>, a weekly podcast about tech, and previously created <a href="https://www.nytimes.com/column/rabbit-hole">Rabbit Hole</a>, an investigative series about internet radicalization. I've written three books&mdash;including <em>Futureproof</em>, about AI and automation&mdash;and am currently working on a fourth, about the race to build artificial general intelligence. Before the <em>Times</em>, I was a writer at <em>New York</em> magazine. I live in the Bay Area.
+        I'm a technology columnist at <em>The New York Times</em>, where I've spent the past decade covering Silicon Valley, social media, and the societal effects of new technology. I co-host <a href="https://www.nytimes.com/column/hard-fork">Hard Fork</a>, a weekly podcast about tech, and previously created <a href="https://www.nytimes.com/column/rabbit-hole">Rabbit Hole</a>, an investigative series about internet radicalization. I've written three books&mdash;including <em>Futureproof</em>, about AI and automation&mdash;and my fourth, <a href="https://theagichronicles.com"><em>The AGI Chronicles</em></a>, about the race to build artificial general intelligence, comes out October 6, 2026. Before the <em>Times</em>, I was a writer at <em>New York</em> magazine. I live in the Bay Area.
       </p>
     </section>
 
@@ -153,8 +155,8 @@ console.log(`
         <li>
           <span class="year">2026</span>
           <div class="entry">
-            <strong>The AGI Chronicles</strong> <span class="soon">Coming 2026</span>
-            <p class="blurb">The inside story of the race to build artificial general intelligence, based on years of reporting on the companies and people trying to create it.</p>
+            <a href="https://theagichronicles.com">The AGI Chronicles: The Inside Story of the Race to Create an Artificial Superintelligence</a> <span class="soon">On sale Oct 6, 2026</span>
+            <p class="blurb">The definitive, behind-the-scenes account of the trillion-dollar sprint to create AGI, drawing on more than 150 interviews with insiders at OpenAI, Anthropic, and Google DeepMind. Starred reviews from <em>Publishers Weekly</em> and <em>Kirkus</em>. <a href="https://theagichronicles.com">Learn more and pre-order &rarr;</a></p>
           </div>
         </li>
         <li>
@@ -279,7 +281,7 @@ console.log(`
         </div>
         <div class="bio-text">
           <h3>Bio</h3>
-          <p><strong>Kevin Roose</strong> is an award-winning technology columnist for <em>The New York Times</em> and the co-host of <em>Hard Fork</em>, a weekly podcast about technology. He is the author of three books, including <em>Futureproof</em> and <em>The Unlikely Disciple</em>, and his fourth book, about the race to build artificial general intelligence, is forthcoming in 2026. He lives in the Bay Area.</p>
+          <p><strong>Kevin Roose</strong> is an award-winning technology columnist for <em>The New York Times</em> and the co-host of <em>Hard Fork</em>, a weekly podcast about technology. He is the author of three books, including <em>Futureproof</em> and <em>The Unlikely Disciple</em>, and his fourth book, <em>The AGI Chronicles: The Inside Story of the Race to Create an Artificial Superintelligence</em>, will be published by Farrar, Straus and Giroux on October 6, 2026. He lives in the Bay Area.</p>
         </div>
       </div>
     </section>
@@ -395,7 +397,58 @@ console.log(`
       </div>
     </div>
   </div>
+
+  <!-- Book announcement modal -->
+  <div class="book-modal" id="book-modal" role="dialog" aria-modal="true" aria-labelledby="book-modal-title" hidden>
+    <div class="book-modal-backdrop" data-close-modal></div>
+    <div class="book-modal-panel">
+      <button class="book-modal-close" type="button" aria-label="Close" data-close-modal>&times;</button>
+      <a class="book-modal-cover" href="https://theagichronicles.com">
+        <img src="cover.jpg" alt="The AGI Chronicles book cover" width="912" height="1400">
+      </a>
+      <div class="book-modal-text">
+        <p class="kicker">New book &middot; October 6, 2026</p>
+        <h2 id="book-modal-title">The AGI Chronicles</h2>
+        <p class="book-modal-sub">The Inside Story of the Race to Create an Artificial Superintelligence</p>
+        <p>The definitive, behind-the-scenes account of the trillion-dollar sprint to create AGI, based on more than 150 interviews with insiders at OpenAI, Anthropic, and Google DeepMind. Starred reviews from <em>Publishers Weekly</em> and <em>Kirkus</em>.</p>
+        <div class="book-modal-actions">
+          <a class="book-modal-btn" href="https://theagichronicles.com">Pre-order now</a>
+          <button type="button" class="book-modal-dismiss" data-close-modal>Maybe later</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Book modal: show once per visitor (per browser), dismiss with Esc/backdrop/buttons.
+    (function () {
+      var modal = document.getElementById('book-modal');
+      var KEY = 'agichronicles-modal-dismissed';
+      var seen = false;
+      try { seen = localStorage.getItem(KEY) === '1'; } catch (e) {}
+      if (seen || location.hash) return;
+
+      function close() {
+        modal.hidden = true;
+        document.body.classList.remove('modal-open');
+        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      }
+      modal.querySelectorAll('[data-close-modal]').forEach(function (el) {
+        el.addEventListener('click', close);
+      });
+      modal.querySelector('.book-modal-btn').addEventListener('click', function () {
+        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hidden) close();
+      });
+      setTimeout(function () {
+        modal.hidden = false;
+        document.body.classList.add('modal-open');
+        modal.querySelector('.book-modal-close').focus();
+      }, 900);
+    })();
+
     // Contact form -> Cloudflare Worker -> Resend. Never navigates away, so no
     // redirect/404 failure mode.
     const WORKER_URL = 'https://kevinroose-form.kbroose.workers.dev/';

@@ -319,7 +319,8 @@ ul { list-style: none; padding: 0; margin: 0; }
   }
 }
 
-.newsletter-section .kicker {
+.newsletter-section .kicker,
+.book-modal-text .kicker {
   font-family: var(--font-mono);
   font-size: 0.64rem;
   font-weight: 600;
@@ -988,4 +989,129 @@ footer .made-with a:hover { color: var(--accent); }
   margin-top: 1rem;
   font-weight: bold;
   color: #ff0000;
+}
+
+/* ---------- Book announcement modal ---------- */
+.book-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.book-modal[hidden] { display: none; }
+.book-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 16, 10, 0.72);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.book-modal-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.75rem;
+  max-width: 620px;
+  width: 100%;
+  padding: 2rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--accent);
+  animation: book-modal-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes book-modal-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.book-modal-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.book-modal-text .kicker { margin-bottom: 0.5rem; }
+.book-modal-text h2 {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 500;
+  line-height: 1.05;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.3rem;
+  padding: 0;
+  border: none;
+}
+.book-modal-sub {
+  font-style: italic;
+  color: var(--ink-secondary);
+  margin: 0 0 0.9rem;
+}
+.book-modal-text p { font-size: 0.95rem; line-height: 1.5; }
+.book-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.book-modal-btn {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #FFF8EF;
+  text-decoration: none;
+}
+.book-modal-btn:hover { background: var(--accent-hover); color: #FFF8EF; }
+.book-modal-dismiss {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.book-modal-dismiss:hover { color: var(--accent); }
+.book-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.6rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+.book-modal-close:hover { color: var(--accent); }
+.book-modal-close:focus-visible,
+.book-modal-btn:focus-visible,
+.book-modal-dismiss:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+body.modal-open { overflow: hidden; }
+@media (max-width: 560px) {
+  .book-modal-panel {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+  .book-modal-cover { max-width: 150px; margin: 0 auto; }
+  .book-modal-text { text-align: center; }
+  .book-modal-actions { justify-content: center; }
 }
