@@ -248,6 +248,23 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .archive li:last-child { border-bottom: none; }
 
+.entry-with-cover {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+}
+.cover-thumb {
+  flex: 0 0 5.2rem;
+  text-decoration: none;
+}
+.cover-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+}
+.cover-thumb:hover img { box-shadow: 0 5px 14px rgba(0, 0, 0, 0.38); }
+
 .year {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -258,7 +275,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   white-space: nowrap;
 }
 
-.entry > a, .entry > strong {
+.entry > a, .entry > strong, .entry-body > a, .entry-body > strong {
   font-family: var(--font-display);
   font-size: 1.13rem;
   font-weight: 560;
@@ -267,7 +284,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   text-decoration: none;
 }
 
-.entry > a:hover { color: var(--accent); }
+.entry > a:hover, .entry-body > a:hover { color: var(--accent); }
 
 .soon {
   font-family: var(--font-mono);
